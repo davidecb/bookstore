@@ -27,13 +27,17 @@ export class User extends BaseEntity {
   @Column({ type: 'varchar', nullable: false })
   password: string;
 
-  @OneToOne(type => UserDetails, {cascade: true, nullable: false, eager: true})
+  @OneToOne((type) => UserDetails, {
+    cascade: true,
+    nullable: false,
+    eager: true,
+  })
   @JoinColumn({ name: 'detail_id' })
   details: UserDetails;
   /* crea una relacion con latabla de user_details, eager significa que cada que haga un 
   select de esta entidad, inmediatamente me trae tambien los detalles */
 
-  @ManyToMany(type => Role, role => role.users, {eager: true})
+  @ManyToMany((type) => Role, (role) => role.users, { eager: true })
   @JoinTable({ name: 'user_roles' })
   roles: Role[];
 

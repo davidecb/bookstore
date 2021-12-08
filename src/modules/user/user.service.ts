@@ -51,7 +51,7 @@ export class UserService {
     const details = new UserDetails();
     user.details = details;
     const repo = await getConnection().getRepository(Role);
-    const defaultRole = await repo.findOne({ where: { name: 'GENERAL'} });
+    const defaultRole = await repo.findOne({ where: { name: 'GENERAL' } });
     user.roles = [defaultRole];
     const savedUser = await this._userRepository.save(user);
     return this._mapperService.map<User, UserDto>(savedUser, new UserDto());
