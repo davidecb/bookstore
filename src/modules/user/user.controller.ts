@@ -10,7 +10,6 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { UserDto } from './dto/user.dto';
 
 @Controller('users')
 export class UserController {
@@ -23,13 +22,13 @@ export class UserController {
   }
 
   @Get()
-  async getUsers(): Promise<UserDto[]> {
+  async getUsers(): Promise<User[]> {
     const users = await this._userService.getAll();
     return users;
   }
 
   @Post()
-  async createUser(@Body() user: User): Promise<UserDto> {
+  async createUser(@Body() user: User): Promise<User> {
     const createdUser = await this._userService.create(user);
     return createdUser;
   }
