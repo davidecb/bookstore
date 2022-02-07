@@ -1,4 +1,3 @@
-import { UserDto } from './dto/user.dto';
 import { UserRepository } from './user.repository';
 import {
   BadRequestException,
